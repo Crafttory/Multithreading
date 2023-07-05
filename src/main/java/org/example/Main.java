@@ -1,8 +1,9 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
+        import java.util.Arrays;
+        import java.util.Random;
+        import java.util.concurrent.atomic.AtomicInteger;
+        import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static AtomicInteger COUNTER1 = new AtomicInteger(0);
@@ -40,6 +41,8 @@ public class Main {
             }
         });
         thread3.start();
+
+        TimeUnit.SECONDS.sleep(60);
 
         System.out.println("Красивых слов с длиной 3: " + COUNTER1);
         System.out.println("Красивых слов с длиной 4: " + COUNTER2);
