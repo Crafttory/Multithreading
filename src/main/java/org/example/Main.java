@@ -3,7 +3,6 @@ package org.example;
         import java.util.Arrays;
         import java.util.Random;
         import java.util.concurrent.atomic.AtomicInteger;
-        import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static AtomicInteger COUNTER1 = new AtomicInteger(0);
@@ -25,6 +24,7 @@ public class Main {
             }
         });
         thread1.start();
+        thread1.join();
         Thread thread2 = new Thread(() -> {
             for (String text : texts) {
                 if(isSameCharacters(text)) {
@@ -33,6 +33,7 @@ public class Main {
             }
         });
         thread2.start();
+        thread2.join();
         Thread thread3 = new Thread(() -> {
             for (String text : texts) {
                 if (isAlpha(text)) {
@@ -41,8 +42,8 @@ public class Main {
             }
         });
         thread3.start();
+        thread3.join();
 
-        TimeUnit.SECONDS.sleep(60);
 
         System.out.println("Красивых слов с длиной 3: " + COUNTER1);
         System.out.println("Красивых слов с длиной 4: " + COUNTER2);
