@@ -24,7 +24,7 @@ public class Main {
             }
         });
         thread1.start();
-        thread1.join();
+
         Thread thread2 = new Thread(() -> {
             for (String text : texts) {
                 if(isSameCharacters(text)) {
@@ -33,7 +33,7 @@ public class Main {
             }
         });
         thread2.start();
-        thread2.join();
+
         Thread thread3 = new Thread(() -> {
             for (String text : texts) {
                 if (isAlpha(text)) {
@@ -42,6 +42,9 @@ public class Main {
             }
         });
         thread3.start();
+
+        thread1.join();
+        thread2.join();
         thread3.join();
 
 
